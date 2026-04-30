@@ -4,28 +4,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Login / ALBINOTICIAS</title>
-    <link rel="stylesheet" href="/CSS/styleLogin.css">
+
+    <style>
+        /* RESET */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* BASE */
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #e5e7eb;
+            color: #111;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #111827;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 12px 30px;
+        }
+
+        .logoArea {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logoArea img {
+            height: 45px;
+        }
+
+        .logoArea h1 {
+            color: white;
+            font-size: 22px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+
+            padding: 8px 14px;
+
+            border-radius: 6px;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: #374151;
+        }
+
+        /* MAIN */
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 20px;
+
+            flex: 1;
+        }
+
+        /* CARD LOGIN */
+
+        .loginCard {
+            background: white;
+
+            width: 100%;
+            max-width: 420px;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* TOGGLE */
+
+        .toggle-container {
+            position: relative;
+            width: 220px;
+            margin: 0 auto 20px auto;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .toggle {
+            position: relative;
+            display: flex;
+
+            width: 100%;
+            height: 45px;
+
+            background-color: #ddd;
+
+            border-radius: 30px;
+        }
+
+        .option {
+            flex: 1;
+
+            line-height: 45px;
+
+            cursor: pointer;
+
+            text-align: center;
+
+            z-index: 2;
+
+            font-size: 14px;
+        }
+
+        .slider {
+            position: absolute;
+
+            width: 50%;
+            height: 100%;
+
+            background-color: #15803d;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+        #log:checked~.toggle .slider {
+            left: 0;
+        }
+
+        #cad:checked~.toggle .slider {
+            left: 50%;
+        }
+
+        /* TÍTULO */
+
+        h2 {
+            text-align: center;
+
+            margin-bottom: 15px;
+
+            color: #15803d;
+        }
+
+        /* INPUTS */
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 10px;
+
+            margin-top: 10px;
+
+            border-radius: 8px;
+
+            border: 1px solid #ccc;
+
+            font-size: 14px;
+        }
+
+        /* BOTÕES */
+
+        button {
+            width: 100%;
+
+            margin-top: 12px;
+
+            padding: 10px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #15803d;
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #166534;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+    </style>
+
 </head>
 
 <body>
 
+    <!-- HEADER -->
+
     <header>
-        <img src="/logoDPNA.png" alt="Logo">
-        <h1 style="color: white;">
-            ALBINOTICIAS
-        </h1>
+
+        <div class="logoArea">
+            <img src="/logoDPNA.png">
+            <h1>ALBINOTICIAS</h1>
+        </div>
 
         <nav>
-            <a href="/HTML/index.html">Início</a>
+            <a href="/index.html">Início</a>
             <a href="/HTML/pesq.html">Pesquisar</a>
         </nav>
+
     </header>
 
-        <main>
+    <!-- MAIN -->
+
+    <main>
+
+        <div class="loginCard">
+
             <div class="toggle-container">
 
-                <input type="radio" id="log" name="conta" value="login">
+                <input type="radio" id="log" name="conta" value="login" checked>
                 <input type="radio" id="cad" name="conta" value="Cadastro">
 
                 <div class="toggle">
@@ -35,45 +262,80 @@
                 </div>
 
             </div>
-            
-            <strong>
-                <h1 id="form-title">Login</h1>
-            </strong>
+
+            <h2 id="form-title">Login</h2>
+
+            <!-- LOGIN -->
 
             <form id="login-form">
+
                 <input type="text" id="login-username" placeholder="Nome de usuário" required>
+
                 <input type="password" id="login-password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
+
+                <button type="submit">
+                    Entrar
+                </button>
+
             </form>
+
+            <!-- CADASTRO -->
 
             <form id="signup-form" style="display: none;">
-                <input type="text" id="signup-username" minlength="3" maxlength="15" placeholder="Nome de usuário"
-                    required>
+
+                <input type="text" id="signup-username" placeholder="Nome de usuário" required>
+
                 <input type="email" id="signup-email" placeholder="Email" required>
-                <input type="date" id="signup-birthdate" min="1920-01-01" required>
-                <input type="tel" id="signup-number" maxlength="12" placeholder="Número de telefone" required>
-                <input type="password" id="signup-password" minlength="6" maxlength="10" placeholder="Senha" required>
-                <input type="password" id="signup-confirm-password" minlength="6" maxlength="10"
-                    placeholder="Confirmar Senha" required>
-                <button type="submit">Continuar</button>
+
+                <input type="date" id="signup-birthdate" required>
+
+                <input type="tel" id="signup-number" placeholder="Número de telefone" required>
+
+                <input type="password" id="signup-password" placeholder="Senha" required>
+
+                <input type="password" id="signup-confirm-password" placeholder="Confirmar Senha" required>
+
+                <button type="submit">
+                    Continuar
+                </button>
+
             </form>
 
+            <!-- ETAPA FINAL -->
+
             <form id="signup-form2" style="display: none;">
+
                 <select id="tema-user" required>
-                    <option value="" disabled selected>Selecione o tema</option>
+
+                    <option disabled selected>
+                        Selecione o tema
+                    </option>
+
                     <option>Futebol Europeu</option>
                     <option>Futebol Inglês</option>
                     <option>Futebol Brasileiro</option>
+
                 </select>
 
-                <button type="submit">Cadastrar</button>
+                <button type="submit">
+                    Cadastrar
+                </button>
+
             </form>
 
-        </main>
+        </div>
 
-        <footer>
-            <p>&copy; 2026 ALBINOTICIAS. Todos os direitos reservados.</p>
-        </footer>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 ALBINOTICIAS — Todos os direitos reservados.
+        </p>
+
+    </footer>
 
     <script src="/JS/scriptLogin.js"></script>
 
