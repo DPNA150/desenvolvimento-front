@@ -39,7 +39,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
     }
 
     alert("Login realizado!");
-    window.location.href = "index.html";
+    window.location.href = "https://dpna150.github.io/desenvolvimento-front/";
 });
 
 // CADASTRO ETAPA 1
